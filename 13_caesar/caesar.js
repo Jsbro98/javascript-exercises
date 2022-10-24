@@ -2,6 +2,7 @@ const caesar = function(string, shift) {
     let result = "";
     const stringArray = [...string];
 
+    // loop through each index in stringArray
     for (i = 0; i < stringArray.length; i++) {
         let keyCode = stringArray[i].charCodeAt();
         let lowerCase = false;
@@ -15,8 +16,11 @@ const caesar = function(string, shift) {
             lowerCase = true;
         };
 
+        // alter the keycode
         keyCode += shift;
 
+
+        // two if blocks to check and make sure they are still within alphabetical range
         if (upperCase && keyCode > 90 || upperCase && keyCode < 65) {
             while (keyCode < 65 || keyCode > 90) {
                 if (keyCode > 90) {
@@ -37,14 +41,13 @@ const caesar = function(string, shift) {
             }
         };
 
+        // change current index to new shifted string keyCode
         stringArray[i] = String.fromCharCode(keyCode);
         
     }
     result = stringArray.join("");
     return result;
 };
-
-caesar('Z', 1);
 
 // capitol letters: 65 - 90
 // lower case letters: 97 - 122
